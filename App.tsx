@@ -1,13 +1,20 @@
-import { Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Home from './pages/Home'
+import Quiz from './pages/Quiz'
+import ModulesPage from './pages/ModulesPage'
+import { RootStackParamList } from './utils/type'
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function App() {
-  const test: string = 'test'
-
   return (
-    <View className='flex-1 items-center justify-center bg-red-400'>
-      <Text className='text-white'>
-        Open up App.js to start working on your app!
-      </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Quiz' component={Quiz} />
+        <Stack.Screen name='ModulesPage' component={ModulesPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
