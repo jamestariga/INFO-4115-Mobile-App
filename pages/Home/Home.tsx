@@ -8,11 +8,13 @@ import {
 import { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon } from 'react-native-heroicons/outline'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../utils/type'
+import { BookOpenIcon } from 'react-native-heroicons/solid'
 
 const Home = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -32,18 +34,30 @@ const Home = () => {
           <UserIcon size={30} color={'#ffffff'} />
         </View>
       </View>
-      <ScrollView className='bg-white'>
-        <View className='flex flex-row justify-between items-center'>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Text>Modules</Text>
+      <View className='bg-white flex items-center space-y-10 pt-10 h-screen'>
+        <View className='px-4'>
+          <TouchableOpacity onPress={() => navigation.navigate('ModulesPage')}>
+            <View className='bg-neutral-600 flex flex-row justify-between items-center h-48 rounded-xl'>
+              <View className='flex flex-row justify-center items-center w-full pt-6 space-x-6'>
+                <Text className='text-2xl font-bold text-gray-800'>
+                  Modules
+                </Text>
+                <BookOpenIcon size={30} color={'#e82e2e'} />
+              </View>
+            </View>
           </TouchableOpacity>
         </View>
-        <View className='flex flex-row justify-between items-center'>
+        <View className='px-4'>
           <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
-            <Text>Quiz</Text>
+            <View className='bg-neutral-600 flex flex-row justify-between items-center h-48 rounded-xl'>
+              <View className='flex flex-row justify-center items-center w-full pt-6 space-x-6'>
+                <Text className='text-2xl font-bold text-gray-800'>Quiz</Text>
+                <BookOpenIcon size={30} color={'#e82e2e'} />
+              </View>
+            </View>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   )
 }
