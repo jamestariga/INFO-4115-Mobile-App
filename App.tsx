@@ -14,6 +14,7 @@ export default function App() {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Quiz' component={Quiz} />
         <Stack.Screen name='ModulesPage' component={ModulesPage} />
+        <Stack.Screen name='Achievements' component={ModulesPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
