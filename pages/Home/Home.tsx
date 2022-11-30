@@ -1,16 +1,11 @@
-import {
-  SafeAreaView,
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native'
+import { SafeAreaView, View, Text } from 'react-native'
 import { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon } from 'react-native-heroicons/outline'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../../utils/type'
-import { BookOpenIcon } from 'react-native-heroicons/solid'
+import HomeCards from '../../components/HomeCards'
+import { DATA } from './Data'
 
 const Home = () => {
   const navigation =
@@ -34,29 +29,15 @@ const Home = () => {
           <UserIcon size={30} color={'#ffffff'} />
         </View>
       </View>
-      <View className='bg-white flex items-center space-y-10 pt-10 h-screen'>
-        <View className='px-4'>
-          <TouchableOpacity onPress={() => navigation.navigate('ModulesPage')}>
-            <View className='bg-neutral-600 flex flex-row justify-between items-center h-48 rounded-xl'>
-              <View className='flex flex-row justify-center items-center w-full pt-6 space-x-6'>
-                <Text className='text-2xl font-bold text-gray-800'>
-                  Modules
-                </Text>
-                <BookOpenIcon size={30} color={'#e82e2e'} />
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View className='px-4'>
-          <TouchableOpacity onPress={() => navigation.navigate('Quiz')}>
-            <View className='bg-neutral-600 flex flex-row justify-between items-center h-48 rounded-xl'>
-              <View className='flex flex-row justify-center items-center w-full pt-6 space-x-6'>
-                <Text className='text-2xl font-bold text-gray-800'>Quiz</Text>
-                <BookOpenIcon size={30} color={'#e82e2e'} />
-              </View>
-            </View>
-          </TouchableOpacity>
-        </View>
+      <View className='bg-white flex items-center pt-10 h-screen'>
+        {DATA.map((item) => (
+          <HomeCards
+            key={item.id}
+            title={item.title}
+            image={item.image}
+            navigate={item.navigate}
+          />
+        ))}
       </View>
     </SafeAreaView>
   )
